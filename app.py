@@ -16,7 +16,9 @@ from rag import ask_question
 
 
 load_dotenv()
-
+groq_api_key = os.getenv("GROQ_API_KEY")
+if not groq_api_key and "GROQ_API_KEY" in st.secrets:
+    groq_api_key = st.secrets["GROQ_API_KEY"]
 
 st.set_page_config(
     page_title="Doc Q&A",
@@ -67,12 +69,16 @@ if (
 
 
 # ---- LLM ----
+if not groq_api_key:
+    st.error("GROQ_API_KEY is missing. Add it to your .env file or Streamlit Secrets.")
+    st.stop()
 
 llm = ChatGroq(
-    api_key=os.environ.get("GROQ_API_KEY"),
+    api_key=groq_api_key,
     model="openai/gpt-oss-20b",
     temperature=0.3,
 )
+
 
 
 prompt = create_prompt()
