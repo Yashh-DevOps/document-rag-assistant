@@ -4,8 +4,10 @@ A document-based **Retrieval-Augmented Generation (RAG)** application that enabl
 
 The application combines document loading, text chunking, embedding generation, vector storage, semantic retrieval, and large language model inference to provide relevant answers based on uploaded documents.
 
-## Features
+# Live Demo 
+https://document-rag-assistant-v1.streamlit.app/
 
+## Features
 * Upload and process multiple document formats:
 
   * PDF
